@@ -1,0 +1,12 @@
+apiVersion: infinispan.org/v1
+kind: Infinispan
+metadata:
+  name: saga-infinispan
+spec:
+  container:
+    cpu: 500m
+    memory: 512Mi
+  replicas: 1
+  service:
+    replicationFactor: 2
+    type: Cache

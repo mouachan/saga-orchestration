@@ -47,5 +47,19 @@ curl -X 'POST' \
       "id": "12345","status": "CREATED","customerId": "12345","productItems":[{"productId":"123", "quantity":1, "price":10.0}],"totalPrice": 10,"currency": "EUR","paymentCardId": "1234","shippingAddressId": "1234"
    }'
 ```
-
+# deployment on openshift
+## create kafka cluster
+## create infinispan cluster
+## create Kogito ininispan infra
+```shell
+kogito install infra saga-infinispan-infra --kind Infinispan --apiVersion infinispan.org/v1 --resource-name saga-infinispan 
+```
+## create Kogito Kafka infra
+```shell
+kogito install infra saga-kafka-infra --kind Kafka --apiVersion kafka.strimzi.io/v1beta2 --resource-name saga-cluster
+```   
+## create configmap order-saga properties
+```yaml
+oc create configmap order-saga-cm --from-file=./order-saga/src/main/resources/application.properties --dry-run=client -o yaml | oc apply -f -
+```
  
