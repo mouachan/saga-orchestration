@@ -59,7 +59,7 @@ kogito install infra saga-infinispan-infra --kind Infinispan --apiVersion infini
 kogito install infra saga-kafka-infra --kind Kafka --apiVersion kafka.strimzi.io/v1beta2 --resource-name saga-cluster
 ```   
 ## create configmap order-saga properties
-```yaml
+```
 oc create configmap order-saga-cm --from-file=./order-saga/src/main/resources/application.properties --dry-run=client -o yaml | oc apply -f -
 ```
  
