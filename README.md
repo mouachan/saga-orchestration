@@ -70,19 +70,23 @@ oc apply -f ./manifest/order-services.yml
 ## get order-services endpoint 
 ```
 oc get route order-services --template={{.spec.host}}
-order-services-order-saga.apps.cluster-360f.360f.sandbox163.opentlc.com
+*order-services-order-saga.apps.cluster-360f.360f.sandbox163.opentlc.com*
 ```
 
 ## update the endpoints of PaymentRemoteServices/StockRemoteServices/ShippingRemoteServices in  the configmap order-saga-cm
+```
 oc edit cm/order-saga-cm
+```
+You should have something like
 
-You should have 
-    com.redhat.microsaga.rest.PaymentRemoteServices/mp-rest/url=https://order-services-order-saga.apps.{YOUR-CLUSTER_OPENSHIFT}
+    ```
+    com.redhat.microsaga.rest.PaymentRemoteServices/mp-rest/url=https://order-services-order-saga.apps.{YOUR-OPENSHIFT-CLUSTER}
     com.redhat.microsaga.rest.PaymentRemoteServices/mp-rest/scope=javax.enterprise.context.ApplicationScoped
-    com.redhat.microsaga.rest.StockRemoteServices/mp-rest/url=https://order-services-order-saga.apps.{YOUR-CLUSTER_OPENSHIFT}
+    com.redhat.microsaga.rest.StockRemoteServices/mp-rest/url=https://order-services-order-saga.apps.{YOUR-OPENSHIFT-CLUSTER}
     com.redhat.microsaga.rest.StockRemoteServices/mp-rest/scope=javax.enterprise.context.ApplicationScoped
-    com.redhat.microsaga.rest.ShippingRemoteServices/mp-rest/url=https://order-services-order-saga.apps.{YOUR-CLUSTER_OPENSHIFT}
+    com.redhat.microsaga.rest.ShippingRemoteServices/mp-rest/url=https://order-services-order-saga.apps.{YOUR-OPENSHIFT-CLUSTER}
     com.redhat.microsaga.rest.ShippingRemoteServices/mp-rest/scope=javax.enterprise.context.ApplicationScoped
+    ```
 ## delete the existing order-saga pod (to load the updated configmap)
 oc delete pod $(oc get pods -l app=order-saga -o custom-columns=POD:.metadata.name --no-headers)
 
