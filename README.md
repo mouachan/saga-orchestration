@@ -88,8 +88,9 @@ You should have something like
     com.redhat.microsaga.rest.ShippingRemoteServices/mp-rest/scope=javax.enterprise.context.ApplicationScoped
     ```
 ## delete the existing order-saga pod (to load the updated configmap)
+```
 oc delete pod $(oc get pods -l app=order-saga -o custom-columns=POD:.metadata.name --no-headers)
-
+```
 ## Send a http POST with order to the order-services endpoint, the service will produce a new event in the kafka topic order, this event will trigger the saga-order process
 ```shell 
 curl -X 'POST' \
