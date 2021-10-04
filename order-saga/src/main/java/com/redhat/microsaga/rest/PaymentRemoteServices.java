@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import com.redhat.microsaga.model.Payment;
 import com.redhat.microsaga.model.PaymentInfo;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
@@ -17,13 +18,13 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 @RegisterRestClient
 public interface PaymentRemoteServices {
     @POST
-    @Path("/payment")
+    @Path("/{id}/payment")
     @Produces("application/json")
-    String payment(@PathParam("paymentInfo") PaymentInfo paymentInfo);
+    Payment payment(@PathParam("id") String id,  String paymentCardId);
 
     @PUT
     @Path("/payment/{id}/cancel")
     @Produces("application/json")
-    String cancelPayment(@PathParam("id") String paymentId);
+    Payment cancelPayment(@PathParam("id") String id, String paymentCardId);
 
 }

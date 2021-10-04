@@ -15,9 +15,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import com.redhat.microsaga.model.Payment;
+import com.redhat.microsaga.model.PaymentInfo;
+
 import javax.ws.rs.PathParam;
 
-import com.redhat.microsaga.model.ProductItem;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
 import io.smallrye.reactive.messaging.ce.CloudEventMetadata;
@@ -33,19 +36,19 @@ import io.smallrye.reactive.messaging.ce.IncomingCloudEventMetadata;
 
 import io.smallrye.mutiny.Multi;
 
-@Path("/stock")
-public class StockResource {
-    private static final Logger LOGGER = Logger.getLogger(StockResource.class);
+@Path("/")
+public class PaymentResource {
+    private static final Logger LOGGER = Logger.getLogger(PaymentResource.class);
 
-    @Channel("stocksuccess")
-    Emitter<String> stockRequestEmitter;
+    @Channel("orderpaymentsuccess")
+    Emitter<String> paymentRequestEmitter;
 
    
     @PUT
-    @Path("/{id}/reserve")
+    @Path("/{id}/payment")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String reserveStock(@PathParam("id") String id, ArrayList<ProductItem> productItems) {
+    public String payment(@PathParam("id") String id, String paymentCardId){
         // IncomingCloudEventMetadata<io.vertx.core.json.JsonObject> cloudEventMetadata = productItems.getMetadata(IncomingCloudEventMetadata.class).orElseThrow(() -> new IllegalArgumentException("Expected a Cloud Event"));
         // LOGGER.infof("Received Cloud Events (spec-version: %s): source:  '%s', type: '%s', subject: '%s' ",
         //             cloudEventMetadata.getSpecVersion(),
@@ -58,19 +61,18 @@ public class StockResource {
         // kogitoprocrefid and kogitoprocid are mandatory to find the existing process
         JsonObject json = new JsonObject()
         .put("specversion", CloudEventMetadata.CE_VERSION_1_0)
-        .put("type", "stocksuccess")
+        .put("type", "orderpaymentsuccess")
         .put("id", id)
-        .put("source", "/reserve")
+        .put("source", "/payment")
         .put("datacontenttype", "application/json")
         .put("time", "2020-07-23T09:12:34Z")
-        .put("data",  "StockBooked  ")
+        .put("data",  "OrderPaymentSuccess")
         .put("kogitoprocrefid", id)
         .put("kogitoprocid","orders")
         .put("kogitoprocinstanceid",id);
         
-        stockRequestEmitter.send(json.encode());
-        LOGGER.infof("event %s produced into the topic stocksuccess",json.encode());
-
-        return "StockSuccess";
+        paymentRequestEmitter.send(json.encode());
+        LOGGER.infof("event %s produced into the topic paymentsuccess",json.encode());
+        return paymentCardId;
     }
 }
