@@ -8,7 +8,7 @@
   <description>Generated project order-saga</description>
 
   <properties>
-    <quarkus.version>2.1.0.Final</quarkus.version>
+    <quarkus.version>2.2.2.Final</quarkus.version>
     <kogito.version>2.0.0-SNAPSHOT</kogito.version>
     <surefire.version>3.0.0-M5</surefire.version>
     <compiler.version>3.8.1</compiler.version>
@@ -117,11 +117,60 @@
       <artifactId>jsr305</artifactId>
       <version>3.0.2</version>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-infinispan-client</artifactId>
+    </dependency>
+    <!--dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-addons-persistence-infinispan</artifactId>
+    </dependency-->
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>drools-decisiontables</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-drools</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-quarkus-rules</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-quarkus-decisions</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-legacy-api</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
       <plugin>
+        <groupId>org.jboss.jandex</groupId>
+        <artifactId>jandex-maven-plugin</artifactId>
+        <version>1.1.0</version>
+        <executions>
+          <execution>
+            <id>make-index</id>
+            <goals>
+              <goal>jandex</goal>
+            </goals>
+          </execution>
+        </executions>
+          <dependencies>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jandex</artifactId>
+                <version>2.1.1.Final</version>
+            </dependency>
+          </dependencies>
+       
+      </plugin>
+      <!--plugin>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>
         <version>5.1.0</version>
@@ -158,7 +207,7 @@
               </configOptions>
             </configuration>
           </execution>
-          <!--execution>
+          <execution>
             <id>stock-gen</id>
             <goals>
               <goal>generate</goal>
@@ -173,9 +222,9 @@
                 <sourceFolder>src/gen/java/main</sourceFolder>
               </configOptions>
             </configuration>
-          </execution-->
+          </execution>
         </executions>
-      </plugin>
+      </plugin-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -189,6 +238,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${surefire.version}</version>
         <configuration>
+          <argLine>--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED</argLine>
           <systemPropertyVariables>
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
             <maven.home>${maven.home}</maven.home>
@@ -203,8 +253,8 @@
           <execution>
             <goals>
               <goal>build</goal>
-              <goal>generate-code</goal>
-              <goal>generate-code-tests</goal>
+              <!-- <goal>generate-code</goal>
+              <goal>generate-code-tests</goal> -->
             </goals>
           </execution>
         </executions>

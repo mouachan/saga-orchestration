@@ -53,19 +53,21 @@ public class StockResource {
         //             cloudEventMetadata.getType(),
         //             cloudEventMetadata.getSubject().orElse("no subject"),
         //             cloudEventMetadata.getExtension​("kogitoReferenceId")); 
-        for(ProductItem pi : productItems )
-            LOGGER.infof("Product Item %s ",pi);
+        // for(ProductItem pi : productItems )
+        //     LOGGER.infof("Product Item %s ",pi);
         JsonObject json = new JsonObject()
         .put("specversion", CloudEventMetadata.CE_VERSION_1_0)
         .put("type", "stocksuccess")
-        .put("id", "id")
-        .put("source", "test://test")
-        .put("subject", "foo")
+        .put("id", id)
+        .put("source", "/reserve")
         .put("datacontenttype", "application/json")
-        .put("dataschema", "http://schema.io")
         .put("time", "2020-07-23T09:12:34Z")
-        .put("data",  "StockSuccess")
-        .put("kogitoReferenceId",id);
+        .put("data",  "StockBooked  ")
+        //.put("kogitoprocrefid",)
+        .put("kogitoprocrefid", id)
+        .put("kogitoprocid","order")
+        .put("kogitoprocinstanceid",id);
+        
         stockRequestEmitter.send(json.encode());
         LOGGER.infof("event %s produced into the topic stocksuccess",json.encode());
 

@@ -44,23 +44,16 @@ public class OrderResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String createOrder(Order order) {
         
-        // IncomingCloudEventMetadata<io.vertx.core.json.JsonObject> cloudEventMetadata = order.getMetadata(IncomingCloudEventMetadata.class).orElseThrow(() -> new IllegalArgumentException("Expected a Cloud Event"));
-        // LOGGER.infof("Received Cloud Events (spec-version: %s): source:  '%s', type: '%s', subject: '%s' ",
-        //             cloudEventMetadata.getSpecVersion(),
-        //             cloudEventMetadata.getSource(),
-        //             cloudEventMetadata.getType(),
-        //             cloudEventMetadata.getSubject().orElse("no subject"),
-        //             cloudEventMetadata.getExtension​("kogitoReferenceId")); 
+        
         JsonObject json = new JsonObject()
                                     .put("specversion", CloudEventMetadata.CE_VERSION_1_0)
                                     .put("type", "order")
-                                    .put("id", "id")
-                                    .put("source", "test://test")
-                                    .put("subject", "foo")
+                                    .put("id", "12345")
+                                    .put("source", "/order")
+                                    .put("subject", "generated order")
                                     .put("datacontenttype", "application/json")
-                                    .put("dataschema", "http://schema.io")
                                     .put("time", "2020-07-23T09:12:34Z")
-                                    .put("data",  order);
+                                    .put("data", order);
 
         orderRequestEmitter.send(json.encode());
         LOGGER.infof("Order %s produced into the topic order",json.encode());
