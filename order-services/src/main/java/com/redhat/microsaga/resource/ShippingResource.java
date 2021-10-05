@@ -22,8 +22,8 @@ import io.vertx.core.json.JsonObject;
 
 
 @Path("/shipping")
-public class ShippingServices {
-    private static final Logger LOGGER = Logger.getLogger(StockResource.class);
+public class ShippingResource {
+    private static final Logger LOGGER = Logger.getLogger(ShippingResource.class);
     @Channel("shippingsuccess")
     Emitter<String> shippingRequestEmitter;
 
@@ -46,7 +46,7 @@ public class ShippingServices {
         
         shippingRequestEmitter.send(json.encode());
         LOGGER.infof("event %s produced into the topic shippingsuccess",json.encode());
-        LOGGER.infof("Shipping ID % Start",schippingId);
+        LOGGER.infof("Shipping ID %s Start",schippingId);
 
         return "ShippingSuccess";
     }
@@ -56,7 +56,7 @@ public class ShippingServices {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String cancelShipping(@PathParam("id") String id, String schippingId){
-        LOGGER.infof("Shipping ID % canceled",schippingId);
+        LOGGER.infof("Shipping ID %s canceled",schippingId);
         return "ShippingCanceled";
     }
 }
