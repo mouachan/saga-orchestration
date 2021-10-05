@@ -73,4 +73,13 @@ public class StockResource {
 
         return "StockSuccess";
     }
+
+    @PUT
+    @Path("/{id}/release")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String releaseStock(@PathParam("id") String id, ArrayList<ProductItem> productItems) {
+        LOGGER.infof("stock released");
+        return "StocReleased";
+    }
 }

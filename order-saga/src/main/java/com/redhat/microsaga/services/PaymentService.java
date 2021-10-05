@@ -16,11 +16,11 @@ public class PaymentService {
     PaymentRemoteServices paymentRemoteServices;
 
     //@Fallback(fallbackMethod = "")
-    public Payment payment(String id,String paymentCardId) {
+    public String payment(String id,String paymentCardId) {
         return paymentRemoteServices.payment(id, paymentCardId);
     }
 
-    public Payment cancelPayment(String id, String paymentCardId) {
+    public String cancelPayment(String id, String paymentCardId) {
         return paymentRemoteServices.cancelPayment(id, paymentCardId);
     }
 }

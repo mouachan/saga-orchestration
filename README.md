@@ -43,9 +43,7 @@ curl -X 'POST' \
   'http://localhost:8086/order' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
-  -d ' {
-      "id": "12345","status": "CREATED","customerId": "12345","productItems":[{"productId":"123", "quantity":1, "price":10.0}],"totalPrice": 10,"currency": "EUR","paymentCardId": "1234","shippingAddressId": "1234"
-   }'
+  -d ' {"id": "12345","status": "CREATED","customerId": "12345","productItems":[{"id":"12345","productId":"123", "quantity":1, "price":10.0}],"totalPrice": 10,"currency": "EUR","paymentCardId": "1234","shippingAddressId": "1234"}'
 ```
 # deployment on openshift
 ## create kafka cluster

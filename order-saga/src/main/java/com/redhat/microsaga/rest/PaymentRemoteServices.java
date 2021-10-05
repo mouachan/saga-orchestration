@@ -17,14 +17,14 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 @RegisterRestClient
 public interface PaymentRemoteServices {
-    @POST
-    @Path("/{id}/payment")
+    @PUT
+    @Path("/payment/{id}/pay")
     @Produces("application/json")
-    Payment payment(@PathParam("id") String id,  String paymentCardId);
+    String payment(@PathParam("id") String id,  String paymentCardId);
 
     @PUT
     @Path("/payment/{id}/cancel")
     @Produces("application/json")
-    Payment cancelPayment(@PathParam("id") String id, String paymentCardId);
+    String cancelPayment(@PathParam("id") String id, String paymentCardId);
 
 }

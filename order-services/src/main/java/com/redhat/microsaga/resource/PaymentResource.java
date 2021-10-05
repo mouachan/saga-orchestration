@@ -36,7 +36,7 @@ import io.smallrye.reactive.messaging.ce.IncomingCloudEventMetadata;
 
 import io.smallrye.mutiny.Multi;
 
-@Path("/")
+@Path("/payment")
 public class PaymentResource {
     private static final Logger LOGGER = Logger.getLogger(PaymentResource.class);
 
@@ -45,7 +45,7 @@ public class PaymentResource {
 
    
     @PUT
-    @Path("/{id}/payment")
+    @Path("/{id}/pay")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String payment(@PathParam("id") String id, String paymentCardId){
@@ -75,4 +75,13 @@ public class PaymentResource {
         LOGGER.infof("event %s produced into the topic paymentsuccess",json.encode());
         return paymentCardId;
     }
+
+    @PUT
+    @Path("/{id}/cancel")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+     public String cancelPayment(@PathParam("id") String id, String paymentCardId){
+        LOGGER.infof("payment canceled");
+        return "PaymentCanceled";
+     }
 }
