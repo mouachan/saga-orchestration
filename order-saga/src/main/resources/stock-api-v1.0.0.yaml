@@ -95,4 +95,21 @@ components:
           description: ""
           type: integer
     ProductItem:
-      $ref: apicurio:54890#/components/schemas/ProductItem
+      title: Root Type for ProductItem
+      description: ''
+      type: object
+      properties:
+        productId:
+          description: Identifier of product
+          type: string
+        quantity:
+          format: int32
+          description: Quantity of this product
+          type: integer
+        price:
+          format: double
+          description: Price for the quantity of product
+          type: number      
+      
+      
+     # $ref: '#/components/schemas/ProductItem'

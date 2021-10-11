@@ -121,14 +121,14 @@
       <artifactId>jsr305</artifactId>
       <version>3.0.2</version>
     </dependency>
-    <!--dependency>
+    <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-infinispan-client</artifactId>
     </dependency>
     <dependency>
       <groupId>org.kie.kogito</groupId>
       <artifactId>kogito-addons-persistence-infinispan</artifactId>
-    </dependency-->
+    </dependency>
     <dependency>
       <groupId>org.kie.kogito</groupId>
       <artifactId>drools-decisiontables</artifactId>
@@ -175,7 +175,7 @@
           </dependencies>
        
       </plugin>
-      <!--plugin>
+      <plugin>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>
         <version>5.1.0</version>
@@ -190,6 +190,7 @@
               <generatorName>java</generatorName>
               <modelPackage>com.redhat.microsaga.model</modelPackage>
               <generateApis>false</generateApis>
+              <skipValidateSpec>true</skipValidateSpec>
               <generateSupportingFiles>false</generateSupportingFiles>
               <configOptions>
                 <sourceFolder>src/gen/java/main</sourceFolder>
@@ -205,6 +206,7 @@
               <inputSpec>${project.basedir}/src/main/resources/payment-api-v1.0.0.yaml</inputSpec>
               <generatorName>java</generatorName>
               <modelPackage>com.redhat.microsaga.model</modelPackage>
+              <skipValidateSpec>true</skipValidateSpec>
               <generateApis>false</generateApis>
               <generateSupportingFiles>false</generateSupportingFiles>
               <configOptions>
@@ -221,6 +223,7 @@
               <inputSpec>${project.basedir}/src/main/resources/stock-api-v1.0.0.yaml</inputSpec>
               <generatorName>java</generatorName>
               <modelPackage>com.redhat.microsaga.model.stock</modelPackage>
+              <skipValidateSpec>true</skipValidateSpec>
               <generateApis>false</generateApis>
               <generateSupportingFiles>false</generateSupportingFiles>
               <configOptions>
@@ -229,7 +232,7 @@
             </configuration>
           </execution>
         </executions>
-      </plugin-->
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
