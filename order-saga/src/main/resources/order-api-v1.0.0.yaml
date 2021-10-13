@@ -152,8 +152,7 @@ components:
                 - CANCELED
                 - FAILED
               type: string
-        -
-          $ref: '#/components/schemas/OrderInfo'
+        - $ref: '#/components/schemas/OrderInfo'
     ProductItem:
       title: Root Type for ProductItem
       description: ''
