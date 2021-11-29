@@ -13,14 +13,17 @@
 
 package com.redhat.microsaga.model;
 
+import java.io.Serializable;
+
 import java.util.Objects;
 
-import java.io.IOException;
 
 /**
  * ProductItem
  */
-public class ProductItem {
+public class ProductItem implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   private String productId;
 
@@ -30,7 +33,6 @@ public class ProductItem {
 
   private Double price;
 
-  public ProductItem(){}
 
 
    /**

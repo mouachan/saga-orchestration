@@ -13,11 +13,11 @@
 
 package com.redhat.microsaga.model;
 
-import java.util.Objects;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 
 /**
  * Order
@@ -49,7 +49,7 @@ public class Order {
 
   private String shippingAddressId;
 
-  Order() {}
+  public Order() {}
 
   public Order(String id) {
     

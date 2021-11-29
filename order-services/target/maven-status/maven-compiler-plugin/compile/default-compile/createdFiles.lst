@@ -1,0 +1,12 @@
+com/redhat/microsaga/resource/OrderResource.class
+com/redhat/microsaga/model/PaymentInfo.class
+com/redhat/microsaga/model/Order.class
+com/redhat/microsaga/model/ProductItem.class
+com/redhat/microsaga/model/PaymentInfoDeserializer.class
+com/redhat/microsaga/model/OrderDeserializer.class
+com/redhat/microsaga/resource/PaymentResource.class
+com/redhat/microsaga/model/PaymentDeserializer.class
+com/redhat/microsaga/resource/StockResource.class
+com/redhat/microsaga/model/Payment.class
+com/redhat/microsaga/resource/ShippingResource.class
+com/redhat/microsaga/model/ProductItemDeserializer.class

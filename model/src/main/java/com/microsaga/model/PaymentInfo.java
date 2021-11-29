@@ -32,7 +32,6 @@ public class PaymentInfo {
   private String orderId;
 
 
-  PaymentInfo() {}
 
    /**
    * Card identifier for payment

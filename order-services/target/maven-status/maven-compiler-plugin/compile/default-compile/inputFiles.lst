@@ -1,0 +1,12 @@
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/model/OrderDeserializer.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/model/Payment.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/resource/PaymentResource.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/model/ProductItemDeserializer.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/resource/OrderResource.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/resource/StockResource.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/resource/ShippingResource.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/model/Order.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/model/PaymentInfoDeserializer.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/model/ProductItem.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/model/PaymentInfo.java
+/Users/mouachani/projects/saga-orchestration/order-services/src/main/java/com/redhat/microsaga/model/PaymentDeserializer.java

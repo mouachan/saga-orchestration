@@ -22,9 +22,6 @@ import java.util.Objects;
 public class Payment {
 
   private String id;
-
-  public Payment() {}
-
   
   private String status;
 
@@ -32,12 +29,9 @@ public class Payment {
 
   private Double amount;
 
-
-  
   private String currency;
 
   private String orderId;
-
 
 
    /**

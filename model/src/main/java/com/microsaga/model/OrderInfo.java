@@ -13,9 +13,10 @@
 
 package com.redhat.microsaga.model;
 
-import java.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 
 /**
  * OrderInfo
@@ -30,8 +31,6 @@ public class OrderInfo {
 
   private Double totalPrice;
 
-  public OrderInfo() {}
-
   
   private String currency;
 
@@ -40,6 +39,8 @@ public class OrderInfo {
 
 
   private String shippingAddressId;
+
+  public OrderInfo() {}
 
 
    /**
