@@ -29,11 +29,11 @@
   </dependencyManagement>
 
   <dependencies>
-    <dependency>
+    <!--dependency>
       <groupId>com.microsaga</groupId>
       <artifactId>model</artifactId>
       <version>1.0.0-SNAPSHOT</version>
-    </dependency>
+    </dependency-->
     <dependency>
       <groupId>org.kie.kogito</groupId>
       <artifactId>kogito-quarkus</artifactId>
@@ -168,6 +168,11 @@
     <dependency>
       <groupId>org.kie.kogito</groupId>
       <artifactId>kogito-legacy-api</artifactId>
+      <version>${kogito.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-addons-quarkus-process-svg</artifactId>
       <version>${kogito.version}</version>
     </dependency>
   </dependencies>

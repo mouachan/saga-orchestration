@@ -1,21 +1,25 @@
 # saga-orchestration
 
-## start strimzi-all-in-one (kafka)
+
+## package order-saga  
+```mvn
+ cd order-saga
+ mvn clean package
+```
+
+## package order-services  
+```mvn
+ cd order-services
+ mvn clean package
+```
+
+
+## start all-in-one 
 ```docker
  docker compose up
 ```
-## run order services
-```mvn
- mvn clean compile quarkus:dev
-```
-## package order-saga  
-```mvn
- mvn clean package
-```
-## run order-saga orchestrator
-```java
- java -jar target/quarkus-app/quarkus-run.jar 
-```
+
+## test
 call the /order endpoint (POST) through the swagger http://localhost:8086/q/swagger-ui 
 
 use the body :
